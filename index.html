@@ -1,0 +1,170 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>offstore — coming soon</title>
+  <meta name="description" content="offstore is coming soon.">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%23ff6a3d'/%3E%3Ccircle cx='16' cy='16' r='7' fill='none' stroke='%23fff' stroke-width='3'/%3E%3C/svg%3E">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #f6f4ef;
+      --fg: #16161a;
+      --muted: #6b6a70;
+      --accent: #ff6a3d;
+      --line: rgba(22, 22, 26, 0.12);
+    }
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f0f12;
+        --fg: #f2f1ee;
+        --muted: #9a99a0;
+        --accent: #ff7a50;
+        --line: rgba(242, 241, 238, 0.12);
+      }
+    }
+
+    * { box-sizing: border-box; margin: 0; }
+
+    html, body { height: 100%; }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: "Space Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      padding: 24px 16px;
+      overflow-x: hidden;
+    }
+
+    /* soft glow behind the content */
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 50% auto auto 50%;
+      width: min(90vw, 640px);
+      aspect-ratio: 1;
+      transform: translate(-50%, -50%);
+      background: radial-gradient(circle, var(--accent) 0%, transparent 65%);
+      opacity: 0.14;
+      filter: blur(40px);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    header, main, footer { position: relative; z-index: 1; width: 100%; max-width: 720px; margin: 0 auto; }
+
+    header {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: -0.01em;
+    }
+
+    .mark {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: var(--accent);
+      display: grid;
+      place-items: center;
+    }
+    .mark::after {
+      content: "";
+      width: 12px;
+      height: 12px;
+      border: 2.5px solid #fff;
+      border-radius: 50%;
+    }
+
+    main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 48px 0;
+    }
+
+    .badge {
+      align-self: flex-start;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+    .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent);
+      animation: pulse 1.8s ease-in-out infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.35; transform: scale(0.8); }
+    }
+
+    h1 {
+      font-size: clamp(2.6rem, 10vw, 5.5rem);
+      line-height: 0.98;
+      letter-spacing: -0.04em;
+      font-weight: 700;
+    }
+    h1 span { color: var(--accent); }
+
+    p.lead {
+      margin-top: 24px;
+      max-width: 34ch;
+      font-size: clamp(1.05rem, 2.6vw, 1.25rem);
+      line-height: 1.5;
+      color: var(--muted);
+    }
+
+    footer {
+      display: flex;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 8px;
+      padding-top: 20px;
+      border-top: 1px solid var(--line);
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .dot { animation: none; }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="mark" aria-hidden="true"></div>
+    offstore
+  </header>
+
+  <main>
+    <div class="badge"><span class="dot"></span> In the works</div>
+    <h1>Something's<br>coming<span>.</span></h1>
+    <p class="lead">Small, clean apps, made our way. We're putting the finishing touches on it. Check back soon.</p>
+  </main>
+
+  <footer>
+    <span>offstore.in</span>
+    <span>© <span id="y">2026</span></span>
+  </footer>
+
+  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+</body>
+</html>
